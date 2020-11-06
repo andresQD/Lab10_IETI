@@ -4,6 +4,8 @@ import Card from '@material-ui/core/Card';
 import CardContent from '@material-ui/core/CardContent';
 import Typography from '@material-ui/core/Typography';
 import { Container } from '@material-ui/core';
+import Link from '@material-ui/core/Link';
+import PictureAsPdfIcon from '@material-ui/icons/PictureAsPdf';
 
 export class Todo extends React.Component{
   render(){
@@ -14,7 +16,7 @@ export class Todo extends React.Component{
                 <p>{this.props.description}</p>
                 <p>{this.props.status} - {this.props.dueDate.format('DD-MM-YYYY')} </p>
                 <p>{this.props.responsible.name}</p>
-                { this.props.img ? <img src={"http://localhost:8080/api/"+this.props.img} width="500" height="500"/> : <div />}
+                { this.props.img.slice(-3)=="pdf" ? <div> <Link href={"http://localhost:8080/api/"+this.props.img}>  Download <PictureAsPdfIcon></PictureAsPdfIcon></Link></div> : <img src={"http://localhost:8080/api/"+this.props.img} width="500" height="500"/>}
             </CardContent>
         </Card>
       </Container>
